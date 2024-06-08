@@ -112,7 +112,7 @@ class Perplexity(evaluate.Measurement):
         else:
             device = "cuda" if torch.cuda.is_available() else "cpu"
 
-        model = AutoModelForCausalLM.from_pretrained(model_id)
+        model = AutoModelForCausalLM.from_pretrained(model_id,device_map="auto")
         model = model.to(device)
 
         tokenizer = AutoTokenizer.from_pretrained(model_id)
